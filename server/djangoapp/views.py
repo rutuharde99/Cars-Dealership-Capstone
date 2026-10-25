@@ -87,3 +87,28 @@ def get_dealer_reviews(request, dealer_id):
             for item in reviews
         ],
     })
+
+
+def get_all_dealers(request):
+    from .models import Dealer
+
+    if request.method != "GET":
+        return JsonResponse(
+            {"status": "error", "message": "GET method required"},
+            status=405,
+        )
+
+    dealers = Dealer.objects.all().order_by("id")
+
+    return JsonResponse({
+        "dealers": [
+            {
+                "id": dealer.id,
+                "name": dealer.name,
+                "city": dealer.city,
+                "state": dealer.state,
+                "address": dealer.address,
+            }
+            for dealer in dealers
+        ]
+    })

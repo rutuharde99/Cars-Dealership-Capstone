@@ -8,3 +8,13 @@ class DealerReview(models.Model):
 
     def __str__(self):
         return f"Review for dealer {self.dealer_id} by {self.reviewer}"
+
+
+class Dealer(models.Model):
+    name = models.CharField(max_length=200)
+    city = models.CharField(max_length=100, blank=True)
+    state = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=300, blank=True)
+
+    def __str__(self):
+        return self.name
