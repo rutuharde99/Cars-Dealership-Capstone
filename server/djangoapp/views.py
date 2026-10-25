@@ -61,3 +61,29 @@ def logout_user(request):
         "status": "success",
         "message": "Logout successful",
     })
+
+
+def get_dealer_reviews(request, dealer_id):
+    from django.http import JsonResponse
+    from .models import DealerReview
+
+    if request.method != "GET":
+        return JsonResponse(
+            {"status": "error", "message": "GET method required"},
+            status=405,
+        )
+
+    reviews = DealerReview.objects.filter(
+        dealer_id=dealer_id
+    ).order_by("id")
+
+    return JsonResponse({
+        "dealer_id": dealer_id,
+        "reviews": [
+            {
+                "reviewer": item.reviewer,
+                "review": item.review,
+            }
+            for item in reviews
+        ],
+    })
