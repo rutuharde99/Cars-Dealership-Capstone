@@ -1,6 +1,2 @@
-Command:
-curl -i -b /tmp/capstone-cookies.txt -c /tmp/capstone-cookies.txt -X POST http://127.0.0.1:8000/djangoapp/logout/
-
-Output:
-{"status": "success", "message": "Logout successful"}
-HTTP_STATUS=200
+]633;E;echo '$ curl -sS -b /tmp/capstone-cookies.txt -c /tmp/capstone-cookies.txt -X GET http://127.0.0.1:8000/djangoapp/logout/';b527ffc9-95f4-4c73-a7be-aadca5c65531]633;C$ curl -sS -b /tmp/capstone-cookies.txt -c /tmp/capstone-cookies.txt -X GET http://127.0.0.1:8000/djangoapp/logout/
+{"userName": ""}

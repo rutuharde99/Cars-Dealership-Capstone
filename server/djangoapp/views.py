@@ -50,18 +50,14 @@ def login_user(request):
 def logout_user(request):
     from django.contrib.auth import logout
 
-    if request.method != "POST":
+    if request.method != "GET":
         return JsonResponse(
-            {"status": "error", "message": "POST method required"},
+            {"status": "error", "message": "GET method required"},
             status=405,
         )
 
     logout(request)
-
-    return JsonResponse({
-        "status": "success",
-        "message": "Logout successful",
-    })
+    return JsonResponse({"userName": ""})
 
 
 def get_dealer_reviews(request, dealer_id):
