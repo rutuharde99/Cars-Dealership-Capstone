@@ -6,36 +6,101 @@ export default function Register() {
     alert("Registration form submitted");
   };
 
-  const fields = [
-    { label: "Username", name: "username", type: "text" },
-    { label: "First Name", name: "first_name", type: "text" },
-    { label: "Last Name", name: "last_name", type: "text" },
-    { label: "Email", name: "email", type: "email" },
-    { label: "Password", name: "password", type: "password" },
-  ];
-
   return (
     <main style={{ maxWidth: "420px", margin: "40px auto", padding: "24px" }}>
       <h1>Sign-up</h1>
+
       <form onSubmit={handleSubmit}>
-        {fields.map((field) => (
-          <div key={field.name} style={{ marginBottom: "16px" }}>
-            <label htmlFor={field.name}>{field.label}</label>
-            <input
-              id={field.name}
-              name={field.name}
-              type={field.type}
-              required
-              style={{
-                display: "block",
-                width: "100%",
-                padding: "10px",
-                marginTop: "6px",
-                boxSizing: "border-box",
-              }}
-            />
-          </div>
-        ))}
+        <div style={{ marginBottom: "16px" }}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              marginTop: "6px",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "16px" }}>
+          <label htmlFor="first_name">First Name</label>
+          <input
+            id="first_name"
+            name="first_name"
+            type="text"
+            placeholder="First Name"
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              marginTop: "6px",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "16px" }}>
+          <label htmlFor="last_name">Last Name</label>
+          <input
+            id="last_name"
+            name="last_name"
+            type="text"
+            placeholder="Last Name"
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              marginTop: "6px",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "16px" }}>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="email"
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              marginTop: "6px",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "16px" }}>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            style={{
+              display: "block",
+              width: "100%",
+              padding: "10px",
+              marginTop: "6px",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
+
         <button type="submit">Register</button>
       </form>
     </main>
