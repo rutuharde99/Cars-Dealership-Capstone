@@ -1,21 +1,33 @@
 # Cars Dealership Web Application
 
+## Repository Name
+Cars-Dealership-Capstone
+
 ## Project Name
 Cars Dealership Web Application
 
 ## Project Description
-A full-stack web application for a car dealership business. The application is intended to display dealership locations, provide dealer details, and allow registered users to submit and view dealership reviews.
+Cars Dealership Web Application is a full-stack web application developed as part of the Full-Stack Development Capstone project. It is designed to display car dealership locations and details, allow users to browse dealership reviews, and enable registered users to submit their own reviews.
 
 ## Project Objectives
-- Display dealership information.
+- Display dealership information on the home page.
 - Filter dealerships by state.
-- Allow users to register and log in.
-- Display dealer reviews.
-- Allow authenticated users to submit reviews.
-- Support deployment and CI/CD workflows.
+- Retrieve dealership details using a dealer ID.
+- Display reviews for selected dealerships.
+- Support user registration, login, and logout.
+- Allow authenticated users to submit dealership reviews.
+- Analyze review sentiment where required by the project.
+- Configure CI/CD using GitHub Actions.
+- Deploy the application using IBM Cloud Code Engine as required by the capstone instructions.
 
 ## Technologies
-The project will use the technologies required by the capstone instructions, including Django, React, APIs, GitHub Actions, and IBM Cloud Code Engine where applicable.
+- **Backend:** Django
+- **Frontend:** React
+- **Version Control:** Git and GitHub
+- **API Testing:** cURL
+- **CI/CD:** GitHub Actions
+- **Deployment:** IBM Cloud Code Engine
 
 ## Project Status
-Initial repository and README setup.
+Initial repository and README setup. Backend, frontend, testing, CI/CD, and deployment will be completed as part of the capstone project.
+
