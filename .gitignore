@@ -1,0 +1,10 @@
+
+# Python and Django local files
+__pycache__/
+*.py[cod]
+server/.venv/
+server/db.sqlite3
+__pycache__/
+*.py[cod]
+server/.venv/
+server/db.sqlite3

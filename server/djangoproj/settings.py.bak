@@ -1,0 +1,21 @@
+
+from pathlib import Path
+
+p = Path("djangoproj/settings.py")
+s = p.read_text()
+
+if "'djangoapp'" in s or '"djangoapp"' in s or "'djangoapp.apps.DjangoappConfig'" in s or '"djangoapp.apps.DjangoappConfig"' in s:
+    print("djangoapp आधीच settings.py मध्ये आहे.")
+else:
+    start = s.find("INSTALLED_APPS = [")
+    if start == -1:
+        raise SystemExit("ERROR: INSTALLED_APPS list सापडली नाही.")
+
+    end = s.find("]", start)
+    if end == -1:
+        raise SystemExit("ERROR: INSTALLED_APPS list पूर्ण सापडली नाही.")
+
+    s = s[:end] + "    'djangoapp',\n" + s[end:]
+    p.write_text(s)
+    print("settings.py मध्ये djangoapp add केले.")
+
