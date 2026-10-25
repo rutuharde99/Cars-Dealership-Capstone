@@ -1,0 +1,6 @@
+Command:
+curl -i -b /tmp/capstone-cookies.txt -c /tmp/capstone-cookies.txt -X POST http://127.0.0.1:8000/djangoapp/logout/
+
+Output:
+{"status": "success", "message": "Logout successful"}
+HTTP_STATUS=200
