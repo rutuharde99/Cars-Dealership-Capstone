@@ -1,14 +1,13 @@
 # Car Dealership Capstone
 
-**Repository Name:** Cars-Dealership-Capstone
+**Repository Name:** xrwvm-fullstack_developer_capstone
 
 **Project Name:** Car Dealership Capstone
-
 
 # Cars Dealership Web Application
 
 ## Repository Name
-Cars-Dealership-Capstone
+xrwvm-fullstack_developer_capstone
 
 ## Project Name
 Cars Dealership Web Application
@@ -37,4 +36,3 @@ Cars Dealership Web Application is a full-stack web application developed as par
 
 ## Project Status
 Initial repository and README setup. Backend, frontend, testing, CI/CD, and deployment will be completed as part of the capstone project.
-
