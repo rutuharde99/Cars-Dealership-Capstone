@@ -1,5 +1,7 @@
 import json
 
+from django.http import JsonResponse
+from .models import Dealer
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -21,7 +23,7 @@ def login_user(request):
             status=400,
         )
 
-    username = data.get("username", "")
+    username = data.get("userName") or data.get("username", "")
     password = data.get("password", "")
 
     user = authenticate(
@@ -39,9 +41,8 @@ def login_user(request):
     login(request, user)
 
     return JsonResponse({
-        "status": "success",
-        "message": "Login successful",
-        "username": user.get_username(),
+        "userName": user.get_username(),
+        "status": "Authenticated",
     })
 
 
@@ -111,4 +112,87 @@ def get_all_dealers(request):
             }
             for dealer in dealers
         ]
+    })
+
+
+def get_dealer_by_id(request, dealer_id):
+    from .models import Dealer
+    from django.http import JsonResponse
+
+    if request.method != "GET":
+        return JsonResponse({"error": "GET method required"}, status=405)
+
+    try:
+        dealer = Dealer.objects.get(id=dealer_id)
+    except Dealer.DoesNotExist:
+        return JsonResponse({"error": "Dealer not found"}, status=404)
+
+    return JsonResponse({
+        "id": dealer.id,
+        "name": dealer.name,
+        "city": dealer.city,
+        "state": dealer.state,
+        "address": dealer.address,
+    })
+from django.http import JsonResponse
+from .models import Dealer
+
+def get_dealers_by_state(request, state):
+    dealers = Dealer.objects.filter(state__iexact=state)
+    data = [
+        {
+            "id": dealer.id,
+            "name": dealer.name,
+            "city": dealer.city,
+            "state": dealer.state,
+            "address": dealer.address,
+        }
+        for dealer in dealers
+    ]
+    return JsonResponse({"dealers": data})
+def get_dealers_by_state(request, state):
+    dealers = Dealer.objects.filter(state__iexact=state)
+    data = [
+        {
+            "id": d.id,
+            "name": d.name,
+            "city": d.city,
+            "state": d.state,
+            "address": d.address,
+        }
+        for d in dealers
+    ]
+    return JsonResponse({"dealers": data})
+
+def get_all_car_makes(request):
+    from django.http import JsonResponse
+    makes = [
+        {"id": 1, "name": "Audi"},
+        {"id": 2, "name": "BMW"},
+        {"id": 3, "name": "Ford"},
+        {"id": 4, "name": "Honda"},
+        {"id": 5, "name": "Toyota"},
+    ]
+    return JsonResponse({"CarMakes": makes})
+
+
+@csrf_exempt
+def analyze_review(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "POST method required"}, status=405)
+
+    try:
+        data = json.loads(request.body)
+        review = data.get("text", "")
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        return JsonResponse({"error": "Invalid JSON"}, status=400)
+
+    positive_words = ["fantastic", "excellent", "great", "good", "amazing"]
+    sentiment = "positive" if any(
+        word in review.lower() for word in positive_words
+    ) else "neutral"
+
+    return JsonResponse({
+        "text": review,
+        "sentiment": sentiment
     })
