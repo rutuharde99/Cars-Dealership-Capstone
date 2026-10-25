@@ -1,0 +1,13 @@
+]633;E;echo "Command:";c2d117a4-5e41-4aba-9822-3f24f1ca6386]633;CCommand:
+curl -s http://localhost:3030/djangoapp/getdealerreviews/1/
+
+Output:
+{
+    "dealer_id": 1,
+    "reviews": [
+        {
+            "reviewer": "Demo User",
+            "review": "Good dealership service."
+        }
+    ]
+}
